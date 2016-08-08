@@ -18,13 +18,17 @@ function bool = detect(mtx, x1, y1, x2, y2)
     %% 在下面添加你的代码O(∩_∩)O
     
     [m, n] = size(mtx);
-    if mtx(x1, y1) == mtx(x2, y2)
-    	bool = directline(mtx, x1, y1, x2, y2) | ...
-    			one_turn(mtx, x1, y1, x2, y2) | ...
-    			two_turn(mtx, x1, y1, x2, y2);
-    else
-    	bool = 0;
-    end
+    if ~( (x1 == x2) & (y1 == y2) )
+	    if mtx(x1, y1) == mtx(x2, y2)
+	    	bool = directline(mtx, x1, y1, x2, y2) | ...
+	    			one_turn(mtx, x1, y1, x2, y2) | ...
+	    			two_turn(mtx, x1, y1, x2, y2);
+		else
+			bool = 0;
+		end
+	else
+	    bool = 0;
+	end
 end
 
 function bool = directline(mtx, x1, y1, x2, y2)
