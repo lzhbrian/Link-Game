@@ -2,7 +2,7 @@ function base = find_base(freq_domain)
 
     % filter top
     maxx = max(abs(freq_domain));
-    f = find(abs(freq_domain) > maxx*0.1);
+    f = find(abs(freq_domain) > maxx*0.82);
 
     x = 1:length(freq_domain);
     % possible top
@@ -10,7 +10,7 @@ function base = find_base(freq_domain)
     [val,index]=max(possible_top);
     base = x(f(index));
 
-    err = 3;
+    err = 2;
 
     % ismember( find( (x>base/2-err & x<base/2+err) ), f )
     if sum(ismember( find( (x>=base/4-err & x<=base/4+err) ), f ))
