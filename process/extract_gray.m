@@ -1,15 +1,22 @@
-% Input 
-    % filepath = 'graygroundtruth.jpg';
-    % filepath = 'graycapture.jpg';
-    % filepath = '/Users/Brian/Desktop/link_game/process/graygroundtruth.jpg';
-    % filepath = '/Users/Brian/Desktop/link_game/process/graycapture.jpg';
-% Output
-    % 12*7 target pictures
+% Split the image
+    % Input 
+        % filepath = 'graygroundtruth.jpg';
+        % filepath = 'graycapture.jpg';
+        % filepath = '/Users/Brian/Desktop/link_game/process/graygroundtruth.jpg';
+        % filepath = '/Users/Brian/Desktop/link_game/process/graycapture.jpg';
+    % Output
+        % {target: 1x84 cell} 
+        % Show: 12*7 target pictures
+        
+% Usage:
+    % extract_gray('/Users/Brian/Desktop/link_game/process/graygroundtruth.jpg');
+    % extract_gray('/Users/Brian/Desktop/link_game/process/graycapture.jpg');
     
-function [target] = extract_gray(filepath)
+function target = extract_gray(filepath)
 
     close all;
 
+    target = {};
     original_pic = imread(filepath, 'jpg');
     pic  = double(original_pic);
         % imshow(pic);
@@ -78,7 +85,7 @@ function [target] = extract_gray(filepath)
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     % Draw output final split images
 
-    row_len = floor(v_len/v_period); % 13
+    row_len = round(v_len/v_period); % 13
     col_len = floor(h_len/h_period); % 8
 
     v_period; % 78
