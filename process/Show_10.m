@@ -6,9 +6,23 @@
         % [ 84x84 Similarity ], { 1x84 target }
 
 % Usage:
-    % Show_top10_right(Similarity, target)
-
-function Show_top10_right(Similarity, target, start)
+    % Show_10(Similarity, target, start_index)
+        % Print 10 pairs start from the (start_index)
+        % (start_index) can be 1, 11, 21, ...
+        
+    % Problem 3 ans:
+        % Show_10(Similarity, target, 1);
+    % Problem 4 ans:
+        % Show_10(Similarity, target, 181);
+        % Show_10(Similarity, target, 191); % 183~192
+        
+    % Show Top 100:
+        % for i = 1:10
+        %   Show_10_(Similarity, target, (i-1)*10+1);
+        % end
+        
+        
+function Show_10(Similarity, target, start_index)
 
     % Turn [ 84x84 Matrix ] to [ 1 x (84*84) row ]
     Similarity = Similarity';
@@ -40,7 +54,7 @@ function Show_top10_right(Similarity, target, start)
             % Count to 10
             count = count + 1;
             
-            if count >= start
+            if count >= start_index
             
                 % subplot ID
                 id = mod( 2*(count-1) + 1, 20);
@@ -59,11 +73,14 @@ function Show_top10_right(Similarity, target, start)
             end
             
             % Count to 10
-            if count >= start + 9
+            if count >= start_index + 9
                 break;
                 a=1
             end
         end
     end
+    ax = axes('position',[0,0,1,1],'visible','off');
+    tx = text(0.4,0.95,['index: ', num2str(start_index), ' to ', num2str(start_index+9)] );
+    set(tx,'fontweight','bold');
     
 end
