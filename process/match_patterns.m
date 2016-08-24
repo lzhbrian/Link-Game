@@ -92,7 +92,7 @@ function cor_max = cal_cor(im1, im2)
     down_margin = height - margin(1);
     
     
-    % Calculate Cor
+    % Calculate Cor using mormxcorr2
     cor_1 = normxcorr2(...
         im1(up_margin:down_margin,...
             left_margin:right_margin), im2);

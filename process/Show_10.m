@@ -75,7 +75,6 @@ function Show_10(Similarity, target, start_index)
             % Count to 10
             if count >= start_index + 9
                 break;
-                a=1
             end
         end
     end
