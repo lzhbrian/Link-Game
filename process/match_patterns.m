@@ -43,28 +43,26 @@ end
 % High Pass
 function high_passed_image = high_pass(img)
 
-    % order of the high pass
-    order = 10;
-    
     % 1 dim high pass
-    filter_1 = fir1(order, 0.5, 'high');
-    % initialize for 2 dim
-    filter_2 = zeros(order + 1);
-    center = order/2 + 1;
+    dim_1_filter = fir1(10, 0.5, 'high');
     
+    % initialize for 2 dim
+    dim_2_filter = zeros(order + 1);
+    % Generate 2 dim filter
+    middle = order/2 + 1;
     for row = 1 : order+1
         for col = 1 : order+1
-            r = round( sqrt( (row-center)^2 + (col-center)^2 ) );
-            if r > center - 1
-                filter_2(row,col) = 0;
+            d = round( sqrt( (row-middle)^2 + (col-middle)^2 ) );
+            if d > middle - 1
+                dim_2_filter(row,col) = 0;
             else
-                filter_2(row,col) = filter_1(center-r);
+                dim_2_filter(row,col) = dim_1_filter(middle-r);
             end
         end
     end
     
     % filter
-    high_passed_image = filter2(filter_2, img);
+    high_passed_image = filter2(dim_2_filter, img);
     
 end
 

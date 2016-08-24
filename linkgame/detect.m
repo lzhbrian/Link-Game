@@ -82,9 +82,11 @@ end
 
 function bool = one_turn(mtx, x1, y1, x2, y2)
 	bool = 0;
+	% Intersection 1
 	first_situation = directline(mtx, x1, y1, x2, y1) ...
 					& directline(mtx, x2, y2, x2, y1) ...
 					& (mtx(x2, y1) == 0);
+	% Intersection 2
 	second_situation= directline(mtx, x1, y1, x1, y2) ...
 					& directline(mtx, x2, y2, x1, y2) ...
 					& (mtx(x1, y2) == 0);
@@ -102,10 +104,12 @@ function bool = two_turn(mtx, x1, y1, x2, y2)
 	augmented_mtx = [zeros(1,n+1);augmented_mtx]; % up
 	augmented_mtx = [zeros(m+2,1) augmented_mtx]; % left
 
+	% Alter position due to augment
 	x1 = x1 + 1;
 	y1 = y1 + 1;
 	x2 = x2 + 1;
 	y2 = y2 + 1;
+	
 	% Prolong
 	[m, n] = size(augmented_mtx);
 	for i = 1:m

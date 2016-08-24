@@ -27,6 +27,7 @@ function steps = omg(mtx)
     % An array of unique pattern number
     patterns = unique(mtx);
 
+    % Make each array with specific pattern
     for i = 1:length(patterns)
         p = patterns(i);
         if p ~= 0
@@ -42,9 +43,12 @@ function steps = omg(mtx)
         end
     end
 
+    % Start matching
     continue_flag = 1;
-    while (continue_flag == 1)
+    while (continue_flag == 1) % Check if it is all done
         continue_flag = 0;
+
+        % Run through all patterns each time
         for i = 1:length(patterns)
             p = patterns(i);
             if p ~= 0
@@ -71,6 +75,7 @@ function steps = omg(mtx)
                             m2 = m;
                         end
                         
+                        % if can match
                         if detect(mtx, m1, n1, m2, n2)
                             steps = [steps, m1, n1, m2, n2];
                             
@@ -83,6 +88,7 @@ function steps = omg(mtx)
                         end
                     end
 
+                    % Check if it is all done in this pattern
                     if break_flag == 1
                         eval(['target_array_' num2str(p) '=target_array;']);
                         % target_array_1 = target_array;

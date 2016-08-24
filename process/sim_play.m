@@ -19,7 +19,7 @@ function sim_play(mtx, target)
     target = reshape(target,[12,7]);
     target = target';
     % Draw target
-%     figure;
+    % figure;
     for i = 1:7
         for j = 1:12
             subplot( 8,12, (i-1)*12+j );
@@ -44,11 +44,11 @@ function sim_play(mtx, target)
         
         % Erase the two targets
         subplot( 8,12, (x1-1)*12+y1 );
-        imshow(zeros(66,54));set(gca,'xcolor',[1 0 0],'ycolor',[1 0 0]) 
+        imshow(zeros(66,54));
         subplot( 8,12, (x2-1)*12+y2 );
-        imshow(zeros(66,54));set(gca,'xcolor',[1 0 0],'ycolor',[1 0 0]) 
+        imshow(zeros(66,54));
         
-        % Pause for 0.5 second
+        % Pause for 0.3 second
         pause(0.3);
     end
 end
